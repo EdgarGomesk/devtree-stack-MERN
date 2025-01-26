@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import { useForm } from 'react-hook-form';
 import ErrorMessage from "../components/ErrorMessage";
 import { LonginForm } from "../types";
@@ -14,12 +14,13 @@ export default function LoginView() {
     }
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm({defaultValues: initialValue})
-
+    const navigate = useNavigate()
     const handleLogin = async (formData : LonginForm) => {
         try {
             const { data } = await api.post(`/auth/login`, formData);
             localStorage.setItem("AUTH_TOKEN", data)
             toast.success("Autenticado correctamente...");
+            navigate("/admin")
             reset()
         } catch (error) {
             if (isAxiosError(error) && error.response) {
