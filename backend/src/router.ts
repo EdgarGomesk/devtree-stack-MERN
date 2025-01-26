@@ -4,7 +4,6 @@ import { body } from "express-validator"
 import { handlerInputErrors } from "./middleware/validation";
 import { authenticate } from "./middleware/auth";
 
-
 const router = Router();
 
 /** Autenticacion y Registro */
