@@ -27,7 +27,7 @@ export async function updateUser(formData : User) {
         }
     }
 }
-
+ 
 export async function uploadImage(file: File) {
     let formData = new FormData();
     formData.append('file', file);
@@ -45,6 +45,18 @@ export async function uploadImage(file: File) {
 export async function getUserByHandle(handle: string) {
     try {
         const { data } = await api<UserHandle>(`/${handle}`);
+        return data;
+    } catch (error) {
+        if (isAxiosError(error) && error.response) {
+            console.log(error.response.data.error)
+            throw new Error(error.response.data.error);
+        }
+    }
+}
+
+export async function searchByHandle(handle: string) {
+    try {
+        const { data } = await api.post<String>(`/search`, {handle});
         return data;
     } catch (error) {
         if (isAxiosError(error) && error.response) {
