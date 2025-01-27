@@ -1,7 +1,7 @@
 import AdminNavigation from "./nav/AdminNavigation";
 import { useLocation } from "react-router-dom"
 import HomeNavigation from "./nav/HomeNavigation";
-import Logo from "./logo";
+import Logo from "./Logo";
 
 export default function Header() {
 

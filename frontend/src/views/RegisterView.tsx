@@ -128,7 +128,7 @@ export default function RegisterView() {
                 <Link
                     to="/auth/login"
                     className='text-center text-white text-lg block'>
-                    ¿ya tienes una cuenta coya? inicia sesion</Link>
+                    ¿ya tienes una cuenta? inicia sesion</Link>
 
             </nav>
         </>

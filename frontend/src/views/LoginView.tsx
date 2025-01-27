@@ -79,7 +79,7 @@ export default function LoginView() {
             </form>
             <nav className="mt-10">
                 <Link className="text-center text-white text-lg block" to="/auth/register">
-                    ¿No tienes una cuenta puta? crea una aquí
+                    ¿No tienes una cuenta? crea una aquí
                 </Link>
             </nav>
         </>
