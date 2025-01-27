@@ -125,7 +125,7 @@ export const uploadImage = async (req: Request, res: Response) => {
                 if (result) {
                     req.user.image = result.secure_url
                     await req.user.save();
-                    res.json({image: result.secure_url});
+                    res.json({ image: result.secure_url });
                 }
             })
         })
@@ -137,4 +137,23 @@ export const uploadImage = async (req: Request, res: Response) => {
     }
 }
 
+export const getUserByHandle = async (req: Request, res: Response) => {
+    try {
+        const { handle } = req.params;
+        const user = await User.findOne({ handle }).select("-id -_v -email -password");
+
+        if (!user) {
+            const error = new Error('El Usuario no existe');
+            res.status(404).json({ error: error.message });
+            return;
+        }
+
+        res.json(user);
+
+    } catch (e) {
+        const error = new Error('Hubo Error')
+        res.status(500).json({ error: error.message });
+        return;
+    }
+}
 
